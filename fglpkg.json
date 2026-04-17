@@ -1,0 +1,11 @@
+{
+  "name": "qrcode",
+  "version": "1.0.0",
+  "root": "com/fourjs/qrcode",
+  "description": "Generate QR codes via the goqr.me (api.qrserver.com) API for Genero BDL",
+  "author": "mifo@4js.com",
+  "license": "MIT",
+  "genero": ">=4.0.0 <7.0.0",
+  "docs": ["USERGUIDE.md"],
+  "programs": ["test_qrcode"]
+}

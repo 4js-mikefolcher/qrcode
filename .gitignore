@@ -4,9 +4,6 @@
 # Log file
 *.log
 
-# BlueJ files
-*.ctxt
-
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
@@ -18,7 +15,33 @@
 *.zip
 *.tar.gz
 *.rar
+*.gar
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
-replay_pid*
+#Genero File extensions
+*.4pwcfg
+*.4pwdb
+*.4pwvs
+*.42?
+*.log
+.DS_Store
+*.4pdb
+.gst
+.vscode
+.github
+
+#Compilation Files
+*.err
+*.rdd
+
+#Directories
+bin/
+build/
+com/
+data/
+fonts/
+
+#Genero Package Files
+.mcp.json
+.fglpkg/
+*.lock
+CLAUDE.md
