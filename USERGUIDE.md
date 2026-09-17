@@ -94,7 +94,7 @@ PUBLIC TYPE tQRCodeOptions RECORD
     format         STRING,    -- png/gif/jpeg/jpg/svg/eps; default "png"
     color          STRING,    -- foreground colour (e.g. "000000" or "0-0-0")
     bgcolor        STRING,    -- background colour (same format as color)
-    margin         INTEGER,   -- pixels of outer margin (0..50); default 1
+    margin         INTEGER,   -- pixels of outer margin (1..50); default 1
     qzone          INTEGER,   -- quiet zone in modules (0..100); default 0
     ecc            STRING,    -- error correction: "L", "M", "Q", "H"; default "L"
     outputPath     STRING,    -- destination file path; default auto temp file
@@ -105,6 +105,12 @@ END RECORD
 
 Only `data` is required. `normaliseOptions()` (called internally by
 `generateQRCode`) fills in defaults for missing values.
+
+> **Zero reads as "unset" for `size` and `margin`.** A freshly defined BDL
+> record has its numeric members set to `0`, not NULL, so the library cannot
+> distinguish "I want zero" from "I never set this". Both fields therefore
+> fall back to their default when left at `0`. `qzone` is unaffected, because
+> its default *is* `0` — use it if you need to control the quiet zone exactly.
 
 ### Read options
 

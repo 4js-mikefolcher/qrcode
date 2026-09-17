@@ -76,7 +76,7 @@ PUBLIC TYPE tQRCodeOptions RECORD
     format         STRING,    -- "png", "gif", "jpeg", "jpg", "svg", "eps"
     color          STRING,    -- fg colour: "R-G-B" decimal or hex (e.g. "000000")
     bgcolor        STRING,    -- bg colour: same format as color
-    margin         INTEGER,   -- pixel margin around the code (0..50)
+    margin         INTEGER,   -- pixel margin (1..50); 0 or NULL = default
     qzone          INTEGER,   -- quiet zone in modules (0..100)
     ecc            STRING,    -- error correction level: "L", "M", "Q", "H"
     outputPath     STRING,    -- destination file path; default: auto temp file
@@ -178,7 +178,11 @@ PUBLIC FUNCTION normaliseOptions(opts tQRCodeOptions INOUT) RETURNS (INTEGER, ST
         END IF
     END IF
 
-    IF opts.margin IS NULL THEN
+    -- A fresh tQRCodeOptions record has numeric members set to 0, not NULL
+    -- (BDL only defaults STRING members to NULL), so an "IS NULL" test alone
+    -- never fires and the documented default would never be applied. Zero is
+    -- therefore treated as "unset", exactly as it is for `size` above.
+    IF opts.margin IS NULL OR opts.margin = 0 THEN
         LET opts.margin = cDefaultMargin
     END IF
     IF opts.margin < 0 OR opts.margin > cMaxMargin THEN

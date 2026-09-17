@@ -15,6 +15,11 @@
   ],
   "genero": ">=5.0.0 <7.0.0",
   "dependencies": {},
+  "devDependencies": {
+    "fgl": {
+      "fglunit": "^1.0.0"
+    }
+  },
   "root": "com/fourjs/qrcode",
   "docs": [
     "README.md",

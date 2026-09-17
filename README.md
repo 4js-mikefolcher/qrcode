@@ -89,6 +89,21 @@ locally if you expect repeated encodes of the same payload.
 fglpkg bdl qrcode test_qrcode https://www.4js.com
 ```
 
+## Development
+
+```bash
+make deps        # install dev dependencies (fglunit)
+make             # compile the package and the demo program
+make test        # run the test suites; live goqr.me tests skip
+make test-net    # run everything, including live goqr.me calls
+make demo        # run the demo program
+```
+
+Tests live in [tests/](tests/) as plain modules of `PUBLIC FUNCTION test*()`
+cases — `fglunit-gen` writes the runners, so adding a case needs no
+registration anywhere. `make test` is offline and hermetic; only `make
+test-net` reaches the network.
+
 ## License
 
 MIT — see [LICENSE](LICENSE).

@@ -15,6 +15,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   as `Caf%20%20` and the generated QR code carried the wrong text with no
   error reported. It now delegates to the built-in `util.Strings.urlEncode()`,
   which converts to UTF-8 before percent-encoding.
+- The documented `margin` default of 1 was never applied. A freshly defined
+  BDL record sets numeric members to `0`, not NULL, so the `IS NULL` guard in
+  `normaliseOptions()` never fired and every caller silently got a margin of
+  `0`. Zero is now treated as "unset", the way `size` already was.
 
 ### Changed
 
@@ -28,6 +32,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `LICENSE` (MIT).
 - `keywords` in `fglpkg.json`, so the package is findable via `fglpkg search`.
+- A test suite: 48 cases across four fglunit suites in `tests/`, covering
+  option normalisation, URL building, the helper functions and the API error
+  paths. `make test` runs offline in well under a second; the live goqr.me
+  integration tests are opt-in via `QRCODE_NET_TESTS=1` (`make test-net`).
+- `fglunit` as a dev dependency, and `make` targets for deps, tests, JUnit
+  XML output and the demo. The old `make test` (which ran the demo) is now
+  `make demo`.
 - Documented an upstream defect in goqr.me's read endpoint: it mis-decodes
   bytes above `0x7F`, so a QR code generated from `"Café"` decodes back
   through `readQRCode()` as `"Caf矇"`. Generation is unaffected. The
