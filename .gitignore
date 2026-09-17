@@ -27,7 +27,6 @@
 *.4pdb
 .gst
 .vscode
-.github
 
 #Compilation Files
 *.err

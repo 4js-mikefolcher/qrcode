@@ -62,7 +62,7 @@ PUBLIC FUNCTION generateQRCode(opts qrcode_common.tQRCodeOptions)
         IF statusCode < 200 OR statusCode >= 300 THEN
             LET result.status = qrcode_common.cErrHttpStatus
             LET result.errorMessage =
-                SFMT("%1: HTTP %2 %3 — %4",
+                SFMT("%1: HTTP %2 %3 - %4",
                      qrcode_common.getErrorMessage(qrcode_common.cErrHttpStatus),
                      statusCode,
                      NVL(resp.getStatusDescription(), ""),

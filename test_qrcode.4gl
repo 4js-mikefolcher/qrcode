@@ -80,6 +80,8 @@ PRIVATE FUNCTION reportRead(
             DISPLAY SFMT("  %1 OK: %2", label, res.data)
         ELSE
             DISPLAY SFMT("  %1 MISMATCH: got %2", label, res.data)
+            DISPLAY "    (expected for non-ASCII payloads: goqr.me mis-decodes"
+            DISPLAY "     bytes above 0x7F -- see the caveats in USERGUIDE.md)"
         END IF
     ELSE
         DISPLAY SFMT("  %1 FAILED (%2): %3",

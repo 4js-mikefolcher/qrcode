@@ -9,7 +9,7 @@ get back a path to the downloaded image on disk.
 - **Transport**: built-in `com.HttpRequest` (no Java JARs required)
 - **Output**: file on disk, either in the system temp dir or a caller-supplied path
 - **Formats**: PNG, GIF, JPEG, JPG, SVG, EPS
-- **Genero support**: 4.x, 5.x, 6.x
+- **Genero support**: 5.x, 6.x
 
 ## Contents
 
@@ -272,5 +272,11 @@ Behaviour inherited from the upstream service:
 - No hard rate limit, but the provider asks users generating **more than
   10,000 requests per day** to notify them. Abusive traffic may be refused.
 - The service reserves the right to change or discontinue the API.
+- **Decoding mangles non-ASCII payloads.** `readQRCode()` returns whatever
+  goqr.me reports, and their reader mis-guesses the character set for bytes
+  above `0x7F`: a QR code generated from `"Café"` decodes back as
+  `"Caf矇"` (the API literally returns `"data":"Caf\u77c7"`). Generation
+  is unaffected — it sends correctly percent-encoded UTF-8. Use a local
+  decoder if you need a faithful non-ASCII round trip.
 
 Consider caching results locally if you expect heavy use.

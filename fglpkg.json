@@ -1,11 +1,27 @@
 {
   "name": "qrcode",
-  "version": "1.0.0",
-  "root": "com/fourjs/qrcode",
+  "version": "1.1.0",
   "description": "Generate QR codes via the goqr.me (api.qrserver.com) API for Genero BDL",
   "author": "mifo@4js.com",
   "license": "MIT",
-  "genero": ">=4.0.0 <7.0.0",
-  "docs": ["USERGUIDE.md"],
-  "programs": ["test_qrcode"]
+  "repository": "https://github.com/4js-mikefolcher/qrcode",
+  "keywords": [
+    "qrcode",
+    "qr",
+    "barcode",
+    "image",
+    "goqr",
+    "rest-client"
+  ],
+  "genero": ">=5.0.0 <7.0.0",
+  "dependencies": {},
+  "root": "com/fourjs/qrcode",
+  "docs": [
+    "README.md",
+    "USERGUIDE.md",
+    "LICENSE"
+  ],
+  "programs": [
+    "test_qrcode"
+  ]
 }

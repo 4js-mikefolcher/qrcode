@@ -4,7 +4,7 @@ A Genero BDL package for generating QR codes via the
 [goqr.me](https://goqr.me/api/) API (`api.qrserver.com`).
 
 - Package: `com.fourjs.qrcode`
-- Genero versions supported: 4.x, 5.x, 6.x
+- Genero versions supported: 5.x, 6.x
 - Generate and decode QR codes (no external deps, uses built-in `com.HttpRequest`)
 - Decode from local files (native multipart upload) or internet URLs
 - Formats: PNG, GIF, JPEG, SVG, EPS
@@ -75,6 +75,10 @@ Every call to `generateQRCode()` or `readQRCode()` makes an HTTP request to
 - staying within their fair-use policy (they ask users generating more than
   **10,000 requests per day** to contact them)
 
+Note also that goqr.me's **decoder** mis-handles non-ASCII: a QR code
+generated from `"Café"` decodes back through `readQRCode()` as
+`"Caf矇"`. Generation is correct; only the read side is affected.
+
 goqr.me may change, rate-limit, or discontinue the API at any time — your
 application will stop working if they do. Consider caching generated images
 locally if you expect repeated encodes of the same payload.
@@ -87,4 +91,4 @@ fglpkg bdl qrcode test_qrcode https://www.4js.com
 
 ## License
 
-MIT
+MIT — see [LICENSE](LICENSE).

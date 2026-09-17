@@ -1,6 +1,7 @@
 PACKAGE com.fourjs.qrcode
 
 IMPORT os
+IMPORT util
 
 -- Module: qrcode_common
 -- Shared types, constants, error map and helpers for the qrcode library.
@@ -206,42 +207,17 @@ PRIVATE FUNCTION isValidFormat(fmt STRING) RETURNS BOOLEAN
         OR fmt = cFormatJpg OR fmt = cFormatSvg OR fmt = cFormatEps
 END FUNCTION
 
--- RFC 3986 style percent-encoding for the value of a query parameter.
--- Keeps unreserved characters (A-Z a-z 0-9 - _ . ~) unescaped.
+-- RFC 3986 percent-encoding for the value of a query parameter.
+-- Delegates to util.Strings.urlEncode(), which converts the string to UTF-8
+-- before encoding, so accented and non-Latin payloads survive the round trip.
+-- (The hand-rolled byte loop this replaces walked the string with ORD(), which
+-- returns 32 for every byte of a multibyte character in a UTF-8 locale, and so
+-- silently replaced each one with "%20".)
 PUBLIC FUNCTION urlEncode(value STRING) RETURNS STRING
-    DEFINE i INTEGER
-    DEFINE code INTEGER
-    DEFINE ch STRING
-    DEFINE sb base.StringBuffer
     IF value IS NULL THEN
         RETURN ""
     END IF
-    LET sb = base.StringBuffer.create()
-    FOR i = 1 TO value.getLength()
-        LET ch = value.subString(i, i)
-        LET code = ORD(ch)
-        IF (code >= 48 AND code <= 57)           -- 0-9
-        OR (code >= 65 AND code <= 90)           -- A-Z
-        OR (code >= 97 AND code <= 122)          -- a-z
-        OR code = 45 OR code = 95                -- - _
-        OR code = 46 OR code = 126 THEN          -- . ~
-            CALL sb.append(ch)
-        ELSE
-            CALL sb.append(SFMT("%%%1", hexByte(code)))
-        END IF
-    END FOR
-    RETURN sb.toString()
-END FUNCTION
-
--- Format a byte (0-255) as two uppercase hex digits.
-PRIVATE FUNCTION hexByte(n INTEGER) RETURNS STRING
-    DEFINE digits STRING
-    DEFINE hi INTEGER
-    DEFINE lo INTEGER
-    LET digits = "0123456789ABCDEF"
-    LET hi = (n / 16) + 1
-    LET lo = (n MOD 16) + 1
-    RETURN digits.subString(hi, hi) || digits.subString(lo, lo)
+    RETURN util.Strings.urlEncode(value)
 END FUNCTION
 
 -- Build the full goqr.me URL for the given (already normalised) options.
