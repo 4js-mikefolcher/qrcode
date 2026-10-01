@@ -5,6 +5,17 @@ All notable changes to this package are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0] - 2026-10-01
+
+### Added
+
+- Genero 4 support. The minimum supported version is lowered from 5.00 to
+  4.01.03, the release that introduced `os.Path.describeLastError()`, the
+  newest runtime API the package calls. No source changes were needed: the
+  package compiles cleanly with `-Wall` and passes the full test suite,
+  including the live goqr.me tests, on 4.01.07. 1.2.0 is published with
+  Genero 4, 5 and 6 variants.
+
 ## [1.1.0] - 2026-09-17
 
 ### Fixed

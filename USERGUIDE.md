@@ -9,7 +9,7 @@ get back a path to the downloaded image on disk.
 - **Transport**: built-in `com.HttpRequest` (no Java JARs required)
 - **Output**: file on disk, either in the system temp dir or a caller-supplied path
 - **Formats**: PNG, GIF, JPEG, JPG, SVG, EPS
-- **Genero support**: 5.x, 6.x
+- **Genero support**: 4.x (4.01.03 or later), 5.x, 6.x
 
 ## Contents
 
