@@ -5,6 +5,20 @@ All notable changes to this package are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Fixed
+
+- `USERGUIDE.md` now lists `qrcode_read` among the package's modules, and
+  its table of contents links to the reading example.
+- The options table in `USERGUIDE.md` gave the `margin` range as 1..50, but
+  `normaliseOptions()` accepts 0..50, as the `cErrInvalidMargin` message
+  says. 0 selects the default margin of 1, so a margin of 0 pixels cannot
+  be requested. The table and the zero-is-unset note now say so. Behaviour
+  is unchanged.
+- `README.md` called the test runner generator `fglunit-gen`. fglunit's
+  program is `fglunit_gen`.
+
 ## [1.2.0] - 2026-10-01
 
 ### Added

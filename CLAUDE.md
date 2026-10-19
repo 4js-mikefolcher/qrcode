@@ -161,7 +161,7 @@ for the public API before changing it.
   quota and needs outbound access. Run it once before a release, or when
   the request/response handling changes.
 - A test suite is a plain module of `PUBLIC FUNCTION test*()` cases.
-  `fglunit-gen` generates `tests/*.run.4gl`, so never edit or commit those.
+  `fglunit_gen` generates `tests/*.run.4gl`, so never edit or commit those.
   A new suite file must also be added to `SUITES` in the `Makefile`.
 
 ### Known upstream defect

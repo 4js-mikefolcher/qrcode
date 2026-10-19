@@ -100,9 +100,9 @@ make demo        # run the demo program
 ```
 
 Tests live in [tests/](tests/) as plain modules of `PUBLIC FUNCTION test*()`
-cases — `fglunit-gen` writes the runners, so adding a case needs no
-registration anywhere. `make test` is offline and hermetic; only `make
-test-net` reaches the network.
+cases — fglunit's `fglunit_gen` program writes the runners, so adding a
+case needs no registration anywhere. `make test` is offline and hermetic;
+only `make test-net` reaches the network.
 
 ## License
 

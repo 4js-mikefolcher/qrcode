@@ -56,7 +56,7 @@ $(FGLUNIT)/FglUnit.42m:
 
 # --- tests ------------------------------------------------------------
 
-# Each suite is a plain module of PUBLIC FUNCTION test*() cases; fglunit-gen
+# Each suite is a plain module of PUBLIC FUNCTION test*() cases; fglunit_gen
 # writes the MAIN and the registrations, so adding a test case needs no
 # bookkeeping anywhere else.
 # fglcomp writes the .42m to the working directory, not beside the source,
