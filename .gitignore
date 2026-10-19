@@ -43,7 +43,6 @@ fonts/
 .mcp.json
 .fglpkg/
 *.lock
-CLAUDE.md
 
 #Generated test runners
 tests/*.run.4gl
