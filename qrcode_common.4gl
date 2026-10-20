@@ -76,7 +76,7 @@ PUBLIC TYPE tQRCodeOptions RECORD
     format         STRING,    -- "png", "gif", "jpeg", "jpg", "svg", "eps"
     color          STRING,    -- fg colour: "R-G-B" decimal or hex (e.g. "000000")
     bgcolor        STRING,    -- bg colour: same format as color
-    margin         INTEGER,   -- pixel margin (1..50); 0 or NULL = default
+    margin         INTEGER,   -- pixel margin (0..50); 0 or NULL = default
     qzone          INTEGER,   -- quiet zone in modules (0..100)
     ecc            STRING,    -- error correction level: "L", "M", "Q", "H"
     outputPath     STRING,    -- destination file path; default: auto temp file

@@ -4,7 +4,7 @@ A Genero BDL package for generating QR codes via the
 [goqr.me](https://goqr.me/api/) API (`api.qrserver.com`).
 
 - Package: `com.fourjs.qrcode`
-- Genero versions supported: 5.x, 6.x
+- Genero versions supported: 4.x (4.01.03 or later), 5.x, 6.x
 - Generate and decode QR codes (no external deps, uses built-in `com.HttpRequest`)
 - Decode from local files (native multipart upload) or internet URLs
 - Formats: PNG, GIF, JPEG, SVG, EPS
@@ -100,9 +100,9 @@ make demo        # run the demo program
 ```
 
 Tests live in [tests/](tests/) as plain modules of `PUBLIC FUNCTION test*()`
-cases — `fglunit-gen` writes the runners, so adding a case needs no
-registration anywhere. `make test` is offline and hermetic; only `make
-test-net` reaches the network.
+cases — fglunit's `fglunit_gen` program writes the runners, so adding a
+case needs no registration anywhere. `make test` is offline and hermetic;
+only `make test-net` reaches the network.
 
 ## License
 
