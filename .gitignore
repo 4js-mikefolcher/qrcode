@@ -41,7 +41,6 @@ fonts/
 
 #Genero Package Files
 .fglpkg/
-*.lock
 
 #Generated test runners
 tests/*.run.4gl
