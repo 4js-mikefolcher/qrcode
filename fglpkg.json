@@ -1,6 +1,6 @@
 {
   "name": "qrcode",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Generate QR codes via the goqr.me (api.qrserver.com) API for Genero BDL",
   "author": "mifo@4js.com",
   "license": "MIT",
